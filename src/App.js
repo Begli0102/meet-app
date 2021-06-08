@@ -4,12 +4,13 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents.js';
 
-function App() {
+function App(props) {
+
   return (
     <div className="App">
       <CitySearch />  //add here the component as well
       <EventList />
-      <NumberOfEvents />
+      <NumberOfEvents  />
     </div>
   );
 }
