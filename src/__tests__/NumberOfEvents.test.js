@@ -21,13 +21,13 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.event-number-input').prop('value')).toBe(eventValue);
 });
 test('render on change state', () => {
-  const eventValue = { target: { value: 6 } };
+  const eventValue = { target: { value: 8 } };
 
   NumberOfEventsWrapper.find('.event-number-input').simulate(
     'change',
     eventValue
   );
-  expect(NumberOfEventsWrapper.state('eventValue')).toBe(6);
+  expect(NumberOfEventsWrapper.state('eventValue')).toBe(8);
 });
 
 });

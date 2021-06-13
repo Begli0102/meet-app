@@ -4,6 +4,7 @@ import React, { Component } from "react";
 
 class Event extends Component {
   state = {
+    event: {},
     showHideDetails: false,
   };
 
@@ -22,7 +23,7 @@ class Event extends Component {
       <div className='event-container'>
         <h1 className='summary'>{event.summary}</h1>
         <p className='locations'>{event.location}</p>
-        {/* <p className='date'>{event.start.dateTime}</p> */}
+         {/* <p className='date'>{event.start.dateTime}</p>  */}
 
         {this.state.showHideDetails && (
           <div className='event-details'>

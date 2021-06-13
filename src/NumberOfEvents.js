@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import Button from 'react-bootstrap/Button'
 
 class  NumberOfEvents extends Component {
   state = {
@@ -11,8 +12,10 @@ class  NumberOfEvents extends Component {
     });
   };
   render() {
+    
     return (
       <div className="event-number">
+        <h1>Number of Events</h1>
        <input type='number'
           name='numberOfEvent'
           className='event-number-input'
