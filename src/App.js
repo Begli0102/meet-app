@@ -20,14 +20,17 @@ class App extends Component {
 
   updateEvents = (location) => {
     getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
-        events :
-        events.filter((event) => event.location === location);
+      const locationEvents = (location === 'all')
+  
+      ? events
+        :events.filter((event) => event.location === location);
          const { eventValue } = this.state;
+         if (this.mounted) {
       this.setState({
         events: locationEvents.slice(0,eventValue),
-        currentLocation: location      
+        currentLocation: location,  
       });
+    }
     });
   }
 
@@ -51,10 +54,12 @@ class App extends Component {
 
 
   componentDidMount() {
+    const { eventValue } = this.state;
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events),
+        this.setState({ events:events.slice(0,eventValue),
+           locations: extractLocations(events),
          
         });
       }
