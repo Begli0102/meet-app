@@ -40,17 +40,18 @@ input[type="text"], input[type="number"] {
   line-height: 20px;
   align-self: center;
   height: 38px;
+  width:250px;
+  margin-top: 27px;
 }
 
-.city{
-  margin-left: 200px;
-}
+
 .EventList{
   width: 250px;
   text-align: center;
   justify-content: flex-end; 
-  display: inline-flex;
+  display:inline-flex;
   flex-direction: column; 
+  margin-top: 150px;
 }
 
 .event-container {
@@ -60,18 +61,34 @@ input[type="text"], input[type="number"] {
   max-width: 300px;
   margin: auto;
   position: relative;
-  justify-content: flex-end; 
+  /* justify-content: flex-end;  */
+  
+}
+.text-events{ 
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+  
+.CitySearch{
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
 }
 .event-number {
   display: flex; 
   flex-direction: column;
- float: left;
+ 
   width: 200px;
   margin-top:10px;
   text-align: center;
   flex-basis: 300px;
   max-width: 300px;
   
+}
+.search-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -81,7 +98,7 @@ input[type="text"], input[type="number"] {
   z-index: 2;
   align-self: center;
   margin: 0;
-  top: 43px;
+  top: 155px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -101,7 +118,9 @@ input[type="text"], input[type="number"] {
 }
 
 .suggestions>li:hover {
-  background-color: #bcdcdb;
+  background-color: #226e6c; 
+  cursor:pointer;
+  color: #eee;
 }
 
 .list {
@@ -211,6 +230,7 @@ input[type="text"], input[type="number"] {
 
 .Alert {
   font-size: 15px;
+  margin-top: -70px;
 }
 
 .data-vis-wrapper {
