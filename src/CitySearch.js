@@ -40,16 +40,19 @@ class CitySearch extends Component {
   };
   render() {
     return (
+      // <container>
       <div className="CitySearch">
+        <h4 className='search'>Search your city</h4>
         <input
         type="text"
         className="city"
-        placeholder='Search the city'
+        placeholder='Type the city you want'
         value={this.state.query}
         onChange={this.handleInputChanged}
         onFocus={() => { this.setState({ showSuggestions: true }) }}  
       />
-     
+        {/* </div>
+ <div> */}
       <ul className="suggestions" style={this.state.showSuggestions ? {display:'flex'}: { display: 'none' }}>
 
       {this.state.suggestions.map((suggestion) => (
@@ -62,6 +65,7 @@ class CitySearch extends Component {
       </ul>
       <InfoAlert text={this.state.infoText} />
       </div>
+      // </container>
     );
   }
 }

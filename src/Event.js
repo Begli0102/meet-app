@@ -1,6 +1,6 @@
 // src/Event.js
 
-import React, { Component } from "react";
+import React, { Component} from "react";
 
 class Event extends Component {
   state = {
@@ -29,7 +29,7 @@ class Event extends Component {
           <div className='event-details'>
              <h2>About event</h2>
              <p className='description'>{event.description}</p>
-             <a className='link' href={event.link}>See details on Google Calendar</a>
+             {/* <button className='' href={event.htmlLink}>See details on Google Calendar</button> */}
           </div>
         )}
 

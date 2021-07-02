@@ -6,6 +6,9 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents.js';
 import { getEvents,extractLocations } from './api';
 // import './nprogress.css'
+import Logo from './meet-app-192.png';
+
+ 
 
 class App extends Component {
 
@@ -73,9 +76,13 @@ class App extends Component {
 render(){ 
   return (
     <div className="App">
+      <img src={Logo}alt='logo' className='logo'></img>
+      <h1 className='header'>Meet-app</h1>
       <div className='search-container'>
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
+     
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} eventCount={this.eventCount} />
+
       </div>
       <EventList events={this.state.events} />
     </div>
