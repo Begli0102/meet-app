@@ -63,7 +63,9 @@ class CitySearch extends Component {
       </li>
     
       </ul>
+      {/* <div className='Alert'> */}
       <InfoAlert text={this.state.infoText} />
+      {/* </div> */}
       </div>
       // </container>
     );

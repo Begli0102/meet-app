@@ -80,11 +80,11 @@ render(){
       <h1 className='header'>Meet-app</h1>
       <div className='search-container'>
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
-     
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} eventCount={this.eventCount} />
-
       </div>
+      <div className='Alert'>
       <EventList events={this.state.events} />
+      </div>
     </div>
   );
 }

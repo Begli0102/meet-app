@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
-  padding: 3% 5%;
+  /* padding: 3% 5%; */
   height: auto;
 }
 
@@ -51,7 +51,7 @@ input[type="text"], input[type="number"] {
   }
 
 .search{
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .EventList{
   width: 250px;
@@ -68,26 +68,26 @@ input[type="text"], input[type="number"] {
   flex-basis: 300px;
   max-width: 300px;
   /* margin: auto; */
-  position: relative;
+  /* position: relative; */
   /* justify-content: flex-end;  */
   
   
 }
 .text-events{ 
-    margin-top: 0px;
-    margin-bottom: 8px;
+    /* margin-top: 0px; */
+    margin-bottom: 12px;
   }
   
 .CitySearch{
   display: flex;
   flex-direction: column;
-   margin: 20px 15px; 
+   /* margin: 20px 15px;  */
 
 }
 .event-number {
   display: flex;
   flex-direction: column;
-   margin: 50px 15px; 
+   /* margin: 50px 15px;  */
  
   
 }
@@ -108,7 +108,7 @@ input[type="text"], input[type="number"] {
   z-index: 2;
   align-self: center;
     /* margin: 0 auto;   */
-   top: 440px;  
+   top: 415px;  
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -241,7 +241,8 @@ input[type="text"], input[type="number"] {
 .Alert {
   font-size: 15px;
   /* margin-top: 0px; */
-  margin:10px;
+  margin-top:10px;
+  
 }
 
 /* .data-vis-wrapper {
