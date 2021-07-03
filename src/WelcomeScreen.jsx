@@ -31,9 +31,7 @@ class="btn-text"
 
 </div>
 </div>
-<a
-href="https://begli0102.github.io/meet-app/privacy.html"
-rel="nofollow noopener"
+<a href="https://begli0102.github.io/meet-app/privacy.html" className='privacy' rel="nofollow noopener"
 >
 Privacy policy
 </a>
