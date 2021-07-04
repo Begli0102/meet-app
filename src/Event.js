@@ -21,9 +21,9 @@ class Event extends Component {
    
     return (
       <div className='event-container'>
-        <h1 className='summary'>{event.summary}</h1>
+        {/* <h1 className='summary'>{event.summary}</h1> */}
         <p className='locations'>{event.location}</p>
-         {/* <p className='date'>{event.start.dateTime}</p>  */}
+         <p className='date'>{event.start.dateTime}</p> 
 
         {this.state.showHideDetails && (
           <div className='event-details'>

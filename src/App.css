@@ -67,7 +67,7 @@ input[type="text"], input[type="number"] {
   flex-direction: column; 
   flex-basis: 300px;
   max-width: 300px;
-  /* margin: auto; */
+  margin-bottom: 50px; 
   /* position: relative; */
   /* justify-content: flex-end;  */
   
@@ -87,9 +87,6 @@ input[type="text"], input[type="number"] {
 .event-number {
   display: flex;
   flex-direction: column;
-  
- 
-  
 }
 .search-container{
   display: flex; 
@@ -100,6 +97,11 @@ input[type="text"], input[type="number"] {
   height: 300px;
 }
 
+.locations{
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
 
 .suggestions {
   width: 250px;
