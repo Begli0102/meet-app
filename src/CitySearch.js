@@ -15,13 +15,14 @@ class CitySearch extends Component {
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
-    if (suggestions.length === 0) {
+ 
+    if(suggestions.length === 0 ) {
       this.setState({
         query: value,
         infoText: 'Can not find the city. Please try another city',
         suggestions: []
       });
-    }else{ 
+    }else { 
     return this.setState({
       query: value,
       suggestions,
@@ -40,9 +41,10 @@ class CitySearch extends Component {
   };
   render() {
     return (
-      // <container>
+    
       <div className="CitySearch">
         <h4 className='search'>Search your city</h4>
+        <InfoAlert text={this.state.infoText} />
         <input
         type="text"
         className="city"
@@ -51,9 +53,9 @@ class CitySearch extends Component {
         onChange={this.handleInputChanged}
         onFocus={() => { this.setState({ showSuggestions: true }) }}  
       />
-        {/* </div>
- <div> */}
-      <ul className="suggestions" style={this.state.showSuggestions ? {display:'flex'}: { display: 'none' }}>
+         
+         
+      {<ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
 
       {this.state.suggestions.map((suggestion) => (
       <li key={suggestion} onClick={() => this.handleItemClicked(suggestion)}>{suggestion}</li>
@@ -62,12 +64,11 @@ class CitySearch extends Component {
       <b className='suggest'>See all cities</b>
       </li>
     
-      </ul>
-      {/* <div className='Alert'> */}
-      <InfoAlert text={this.state.infoText} />
-      {/* </div> */}
+      </ul>} 
       </div>
-      // </container>
+      
+   
+     
     );
   }
 }

@@ -26,10 +26,10 @@ export const getEvents = async () => {
     return mockData;
   }
 
-  if (!navigator.onLine) {
+  if (!navigator.onLine&&!window.location.href.startsWith('http://localhost')) {
     const events = localStorage.getItem('lastEvents');
     NProgress.done();
-    console.log(events);
+  
     return events ? JSON.parse(events).events : [];
   }
 
@@ -72,10 +72,7 @@ const tokenCheck = accessToken && (await checkToken(accessToken));
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
-    var newurl =
-      window.location.protocol +
-      "//" +
-      window.location.host +
+    var newurl =window.location.protocol +"//" + window.location.host +
       window.location.pathname;
     window.history.pushState("", "", newurl);
   } else {
