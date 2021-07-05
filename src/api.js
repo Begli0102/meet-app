@@ -26,11 +26,11 @@ export const getEvents = async () => {
     return mockData;
   }
 
-  if (!navigator.onLine&&!window.location.href.startsWith('http://localhost')) {
+  if (!navigator.onLine) {
     const events = localStorage.getItem('lastEvents');
     NProgress.done();
   
-    return events ? JSON.parse(events).events : [];
+    return JSON.parse(events);
   }
 
 
