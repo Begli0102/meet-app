@@ -19,7 +19,8 @@ class App extends Component {
   //  numberOfEvents:8,
    eventValue:32, 
    currentLocation: 'all',
-   showWelcomeScreen:undefined
+   showWelcomeScreen:undefined,
+   warningText:''
   
   }
 
@@ -94,21 +95,23 @@ class App extends Component {
   }
 
 render(){ 
+  
+
   if (this.state.showWelcomeScreen === undefined) return <div className="App" />
   return (
     <div className="App">
       <img src={Logo}alt='logo' className='logo'></img>
       <h1 className='header'>Meet-app</h1>
       <div className='search-container'>
-      <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
+      <WarningAlert text={this.state.warningText} />
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} eventCount={this.eventCount} />
-      
+      <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
       </div>
       {/* <div className='Alert'> */}
       <EventList events={this.state.events} />
       {/* </div> */}
-      {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-getAccessToken={() => { getAccessToken() }} /> */}
+      <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+getAccessToken={() => { getAccessToken() }} />
     </div>
   );
 }

@@ -52,11 +52,10 @@ module.exports.getAuthURL = async () => {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*"
     },
     body: JSON.stringify({
-      authUrl: authUrl,
-    }),
+      authUrl: authUrl}),
   };
 };
 module.exports.getAccessToken = async (event) => {
@@ -87,7 +86,7 @@ module.exports.getAccessToken = async (event) => {
         return {
           statusCode: 200,
           headers: {
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "*"
           },
           body: JSON.stringify(token),
         };
@@ -97,7 +96,6 @@ module.exports.getAccessToken = async (event) => {
         console.error(err);
         return {
           statusCode: 500,
-           
           body: JSON.stringify(err),
         };
       });
@@ -120,6 +118,7 @@ module.exports.getAccessToken = async (event) => {
               calendarId: calendar_id,
               auth: oAuth2Client,
               timeMin: new Date().toISOString(),
+              maxResult:32, //not sure
               singleEvents: true,
               orderBy: "startTime",
           },
@@ -147,7 +146,6 @@ module.exports.getAccessToken = async (event) => {
           console.error(err);
           return {
             statusCode: 500,
-             
             body: JSON.stringify(err),
           };
         });
