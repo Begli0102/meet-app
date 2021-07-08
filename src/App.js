@@ -10,7 +10,7 @@ import Logo from './meet-app-192.png';
 import WelcomeScreen from './WelcomeScreen';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid,
    Tooltip, ResponsiveContainer} from 'recharts';
-
+   import EventGenre from './EventGenre';
  
 
 class App extends Component {
@@ -55,16 +55,13 @@ class App extends Component {
   getData = () => {
     
     const { locations, events } = this.state;
- 
     const data = locations.map((location) => {
       const number = events.filter((event) => event.location === location).length
-      const city = location.split('').shift()
-   
+      const city = location.split(', ').shift()
       return { city, number };
     })
-   
-   
-    return data;
+
+    return data
   };
 
   
@@ -89,7 +86,7 @@ class App extends Component {
     }
 
      if ((code || isTokenValid) && this.mounted) {
-       alert("im inside the")
+      
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events:events.slice(0,eventValue),
@@ -108,7 +105,7 @@ class App extends Component {
   
 
 render(){ 
-
+ 
   if (this.state.showWelcomeScreen === undefined) return <div className="App" />
   
   return (
@@ -121,7 +118,8 @@ render(){
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
       </div>
       <h4>Events in each city</h4>
-     
+      <div className="data-vis-wrapper">
+            <EventGenre events={this.state.events} />
       <ResponsiveContainer height={400} >
           <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
             <CartesianGrid />
@@ -136,6 +134,7 @@ render(){
             <Scatter data={this.getData()} fill="#8884d8" />
           </ScatterChart>
         </ResponsiveContainer>
+        </div>
       {/* <div className='Alert'> */}
       <EventList events={this.state.events} />
       {/* </div> */}

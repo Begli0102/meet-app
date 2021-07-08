@@ -189,7 +189,9 @@ input[type="text"], input[type="number"] {
 .show-hide-btn:hover{
   transition-duration: 10ms;
 }
-
+.data-vis-wrapper{
+  display: flex;
+}
 .description {
   overflow-x: hidden;
   width:500px;
