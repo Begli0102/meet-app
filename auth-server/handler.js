@@ -96,6 +96,9 @@ module.exports.getAccessToken = async (event) => {
         console.error(err);
         return {
           statusCode: 500,
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          },
           body: JSON.stringify(err),
         };
       });
@@ -118,7 +121,7 @@ module.exports.getAccessToken = async (event) => {
               calendarId: calendar_id,
               auth: oAuth2Client,
               timeMin: new Date().toISOString(),
-              maxResult:32, //not sure
+              // maxResult:32, //not sure
               singleEvents: true,
               orderBy: "startTime",
           },

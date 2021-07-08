@@ -8,6 +8,8 @@ import { getEvents,extractLocations,checkToken, getAccessToken  } from './api';
 import { WarningAlert } from './Alert';
 import Logo from './meet-app-192.png';
 import WelcomeScreen from './WelcomeScreen';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid,
+   Tooltip, ResponsiveContainer} from 'recharts';
 
  
 
@@ -21,10 +23,12 @@ class App extends Component {
    currentLocation: 'all',
    showWelcomeScreen:undefined,
    warningText:''
+
   
   }
 
   updateEvents = (location) => {
+    console.log('location',location)
     getEvents().then((events) => {
       const locationEvents = (location === 'all')
   
@@ -49,28 +53,34 @@ class App extends Component {
   }
 
   getData = () => {
+    
     const { locations, events } = this.state;
+ 
     const data = locations.map((location) => {
       const number = events.filter((event) => event.location === location).length
-      const city = location.split(' ').shift()
+      const city = location.split('').shift()
+   
       return { city, number };
     })
+   
+   
     return data;
   };
 
-
+  
   async componentDidMount() {
     const { eventValue } = this.state;
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
-    const isTokenValid = (checkToken(accessToken)).error ? false :true;
+    const isTokenValid = (await checkToken(accessToken)).error ? false :true;
      const searchParams = new URLSearchParams(window.location.search);
      const code = searchParams.get("code");
+     console.log('code ',code)
      this.setState({ showWelcomeScreen: !(code || isTokenValid) });
      if (!navigator.onLine) {
       this.setState({
         warningText:
-          'You are currently using the app offline. Events may be out of date.',
+          'The app is run offline. Events may be out of date.',
       });
     } else {
       this.setState({
@@ -79,6 +89,7 @@ class App extends Component {
     }
 
      if ((code || isTokenValid) && this.mounted) {
+       alert("im inside the")
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events:events.slice(0,eventValue),
@@ -94,10 +105,12 @@ class App extends Component {
     this.mounted = false;
   }
 
-render(){ 
   
 
+render(){ 
+
   if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+  
   return (
     <div className="App">
       <img src={Logo}alt='logo' className='logo'></img>
@@ -107,11 +120,27 @@ render(){
       <NumberOfEvents numberOfEvents={this.state.numberOfEvents} eventCount={this.eventCount} />
       <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/> 
       </div>
+      <h4>Events in each city</h4>
+     
+      <ResponsiveContainer height={400} >
+          <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+            <CartesianGrid />
+            <XAxis type="category" dataKey="city" name="city" />
+            <YAxis
+              allowDecimals={false}
+              type="number"
+              dataKey="number"
+              name="number of events"
+            />
+            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+            <Scatter data={this.getData()} fill="#8884d8" />
+          </ScatterChart>
+        </ResponsiveContainer>
       {/* <div className='Alert'> */}
       <EventList events={this.state.events} />
       {/* </div> */}
-      <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-getAccessToken={() => { getAccessToken() }} />
+      {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+        getAccessToken={() => { getAccessToken() }} /> */}
     </div>
   );
 }

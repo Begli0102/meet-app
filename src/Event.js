@@ -24,7 +24,7 @@ class Event extends Component {
          {/* <h1 className='summary'>{event.summary}</h1>  */}
         <p className='locations'>{event.location}</p>
          <p className='date'>{event.start.dateTime}</p> 
-         <p className='time'>{event.start.timeZone}</p>
+         {/* <p className='time'>{event.start.timeZone}</p> */}
         {this.state.showHideDetails && (
           <div className='event-details'>
              <h2>About event</h2>
