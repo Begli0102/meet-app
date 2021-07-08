@@ -123,12 +123,12 @@ render(){
       <ResponsiveContainer height={400} >
           <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
             <CartesianGrid />
-            <XAxis type="category" dataKey="city" name="city" />
+            <XAxis type="category" dataKey="city" name="City:" />
             <YAxis
               allowDecimals={false}
               type="number"
               dataKey="number"
-              name="number of events"
+              name="Number of events:"
             />
             <Tooltip cursor={{ strokeDasharray: "3 3" }} />
             <Scatter data={this.getData()} fill="#8884d8" />

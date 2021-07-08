@@ -12,7 +12,7 @@ export default function EventGenre({ events }) {
 
 	const getData = () => {
 		const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
-		const data = genres.map((genre) => {
+		const data = genres.map((genre, index) => {
 			const number = events.filter((event) =>
 				event.summary.includes(genre)
 			).length;
@@ -39,7 +39,7 @@ export default function EventGenre({ events }) {
 							return `${(percent * 100).toFixed(0)}% ${genre}`;
 						}
 					}}>
-					{data.map(( index) => (
+					{data.map((entry, index) => (
 						<Cell key={`cell-${index}`} fill={colors[index]} />
 					))}
 				</Pie>
