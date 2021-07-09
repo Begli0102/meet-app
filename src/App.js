@@ -69,12 +69,12 @@ class App extends Component {
     const { eventValue } = this.state;
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
-    const isTokenValid = (await checkToken(accessToken)).error ? false :true;
-     const searchParams = new URLSearchParams(window.location.search);
-     const code = searchParams.get("code");
-     console.log('code ',code)
-     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-     if (!navigator.onLine) {
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    // console.log('code ', code)
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if (!navigator.onLine) {
       this.setState({
         warningText:
           'The app is run offline. Events may be out of date.',
@@ -84,17 +84,23 @@ class App extends Component {
         warningText: '',
       });
     }
-
-     if ((code || isTokenValid) && this.mounted) {
-      
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events:events.slice(0,eventValue),
-           locations: extractLocations(events),
-        });
-      }
-    });
- }
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events: events.slice(0, eventValue),
+            locations: extractLocations(events),
+          });
+        }
+      });
+    } else {
+      // Function below is used to test on local machine(when code is null and isTokenValid is false )
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events: events.slice(0, eventValue), locations: extractLocations(events) });
+        }
+      });
+    }
   }
 
  
@@ -123,12 +129,12 @@ render(){
       <ResponsiveContainer height={400} >
           <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
             <CartesianGrid />
-            <XAxis type="category" dataKey="city" name="City:" />
+            <XAxis type="category" dataKey="city" name="City" />
             <YAxis
               allowDecimals={false}
               type="number"
               dataKey="number"
-              name="Number of events:"
+              name="Number of events"
             />
             <Tooltip cursor={{ strokeDasharray: "3 3" }} />
             <Scatter data={this.getData()} fill="#8884d8" />

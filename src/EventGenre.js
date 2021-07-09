@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
-export default function EventGenre({ events }) {
-	const [data, setData] = useState([]);
+const EventGenre=({ events })=> {
 
-	 const colors = ['#65A498', '#3D314A', '#684756', '#96705B', '#AB8476'];
+const [data, setData] = useState([]);
 
-	useEffect(() => {
-		setData(() => getData());
-	}, [events]);
+const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AB8476'];
+
+	useEffect(() => {setData(() => getData());}, [events]);
 
 	const getData = () => {
 		const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
 		const data = genres.map((genre, index) => {
-			const number = events.filter((event) =>
+			const value = events.filter((event) =>
 				event.summary.includes(genre)
 			).length;
-			return { genre, number };
+			return { genre, value };
 		});
-		console.log(data);
+		// console.log(data);
 		return data;
 	};
 
@@ -30,10 +29,9 @@ export default function EventGenre({ events }) {
 					cx='50%'
 					cy='50%'
 					labelLine={false}
-					innerRadius={50}
-					outerRadius={100}
+					 outerRadius={125}
 					fill='#D0ABA0'
-					dataKey='number'
+					dataKey='value'
 					label={({ genre, percent }) => {
 						if (percent > 0) {
 							return `${(percent * 100).toFixed(0)}% ${genre}`;
@@ -42,8 +40,13 @@ export default function EventGenre({ events }) {
 					{data.map((entry, index) => (
 						<Cell key={`cell-${index}`} fill={colors[index]} />
 					))}
+          
 				</Pie>
 			</PieChart>
 		</ResponsiveContainer>
 	);
 }
+
+export default EventGenre;
+
+

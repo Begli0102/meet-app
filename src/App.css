@@ -76,8 +76,10 @@ input[type="text"], input[type="number"] {
   margin-bottom: 50px; 
   /* position: relative; */
   /* justify-content: flex-end;  */
-  
-  
+}
+
+.recharts-tooltip-label{
+  display: none;
 }
 .text-events{ 
     /* margin-top: 0px; */
