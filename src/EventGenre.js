@@ -39,8 +39,7 @@ const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AB8476'];
 					}}>
 					{data.map((entry, index) => (
 						<Cell key={`cell-${index}`} fill={colors[index]} />
-					))}
-          
+					))}  
 				</Pie>
 			</PieChart>
 		</ResponsiveContainer>

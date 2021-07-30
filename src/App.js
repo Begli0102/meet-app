@@ -93,15 +93,16 @@ class App extends Component {
           });
         }
       });
-    } else {
-      // Function below is used to test on local machine(when code is null and isTokenValid is false )
-      getEvents().then((events) => {
-        if (this.mounted) {
-          this.setState({ events: events.slice(0, eventValue), locations: extractLocations(events) });
-        }
-      });
-    }
-  }
+    } 
+  // else {
+  //     // Function below is used to test on local machine(when code is null and isTokenValid is false )
+  //     getEvents().then((events) => {
+  //       if (this.mounted) {
+  //         this.setState({ events: events.slice(0, eventValue), locations: extractLocations(events) });
+  //       }
+  //     });
+  //   }
+   }
 
  
   componentWillUnmount(){
@@ -144,8 +145,8 @@ render(){
       {/* <div className='Alert'> */}
       <EventList events={this.state.events} />
       {/* </div> */}
-      {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-        getAccessToken={() => { getAccessToken() }} /> */}
+       <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+        getAccessToken={() => { getAccessToken() }} /> 
     </div>
   );
 }
