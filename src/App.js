@@ -3,7 +3,7 @@ import './App.css';
 import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
-import NumberOfEvents from './NumberOfEvents.js';
+import NumberOfEvents from './NumberOfEvents.js'; 
 import { getEvents,extractLocations,checkToken, getAccessToken  } from './api';
 import { WarningAlert } from './Alert';
 import Logo from './meet-app-192.png';

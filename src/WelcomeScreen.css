@@ -8,6 +8,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
   }
   .login-button {
   color: #494949;
