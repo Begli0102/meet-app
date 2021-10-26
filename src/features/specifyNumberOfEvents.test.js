@@ -10,6 +10,7 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 defineFeature(feature, test => {
   let AppWrapper;
   let NumberOfEventsWrapper;
+  
   test('When user hasn’t specified a number, 32 is the default number', ({ given, when, then }) => {
     given('the user hasn’t specified any number', () => {
       NumberOfEventsWrapper = shallow(<NumberOfEvents />);

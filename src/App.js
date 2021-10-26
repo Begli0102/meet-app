@@ -9,8 +9,8 @@ import { WarningAlert } from './Alert';
 import Logo from './meet-app-192.png';
 import WelcomeScreen from './WelcomeScreen';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid,
-   Tooltip, ResponsiveContainer} from 'recharts';
-   import EventGenre from './EventGenre';
+         Tooltip, ResponsiveContainer} from 'recharts';
+import EventGenre from './EventGenre';
  
 
 class App extends Component {

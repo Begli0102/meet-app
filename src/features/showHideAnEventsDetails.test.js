@@ -12,6 +12,7 @@ defineFeature(feature, test => {
   let AppWrapper;
   let EventListWrapper;
   let EventWrapper;
+
   test('An event element is collapsed by default', ({ given, when, then }) => {
     given('the user hasn’t expanded an event to see its details', () => {
       EventWrapper = mount(<Event event={mockData[0]} />);
@@ -24,6 +25,7 @@ defineFeature(feature, test => {
       expect(EventWrapper.find(".event-details")).toHaveLength(0);
     });
   });
+
   test('User can expand an event to see its details', ({ given, when, then }) => {
     given('the main page is open', () => {
       AppWrapper = mount(<App />);
@@ -37,6 +39,7 @@ defineFeature(feature, test => {
       expect(EventWrapper.find(".event-details")).toHaveLength(1);
     });
   });
+  
   test('User can collapse an event to hide its details', ({ given, when, then }) => {
     given('an event’s details is expanded', () => {
       AppWrapper = mount(<App />);
