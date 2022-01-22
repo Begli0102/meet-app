@@ -40,8 +40,8 @@ defineFeature(feature, test => {
     });
   });
   
-  test('User can collapse an event to hide its details', ({ given, when, then }) => {
-    given('an event’s details is expanded', () => {
+  test('the user should no longer see the event’s details', ({ given, when, then }) => {
+    given("an event's details is expanded", () => {
       AppWrapper = mount(<App />);
       EventListWrapper = mount(<EventList events={mockData} />);
       EventWrapper = mount(<Event event={mockData} />);
@@ -51,7 +51,7 @@ defineFeature(feature, test => {
     when('the user clicks on the collapse/show less button', () => {
       EventWrapper.find(".show-hide-btn").simulate("click");
     });
-    then('the user should no longer see the event’s details', () => {
+    then("the user should no longer see the event's details", () => {
       expect(EventWrapper.find(".event-details")).toHaveLength(0);
     });
   });

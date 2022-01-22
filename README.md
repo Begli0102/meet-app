@@ -2,6 +2,11 @@
 The Meet App is a serverless, progressive web application (PWA) that allows users to view a list of events that is pulled from the Google Calender API. Users can view details about the events, filter the events and see some basic data charts about the events.
 
 
+
+<img src ='src/image/meetapp.png'>
+
+[Click here to see the demo ](https://begli0102.github.io/meet-app/)
+
 ## User stories
 ### 1: FILTER EVENTS BY CITY
  As a user, I want to filter events by city. So that I can be aware of what is happening in my location.

@@ -7,7 +7,7 @@ import NumberOfEvents from './NumberOfEvents.js';
 import { getEvents,extractLocations,checkToken, getAccessToken  } from './api';
 import { WarningAlert } from './Alert';
 import Logo from './meet-app-192.png';
-import WelcomeScreen from './WelcomeScreen';
+// import WelcomeScreen from './WelcomeScreen';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid,
          Tooltip, ResponsiveContainer} from 'recharts';
 import EventGenre from './EventGenre';
@@ -145,8 +145,8 @@ render(){
       {/* <div className='Alert'> */}
       <EventList events={this.state.events} />
       {/* </div> */}
-       <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-        getAccessToken={() => { getAccessToken() }} /> 
+       {/* <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+        getAccessToken={() => { getAccessToken() }} />  */}
     </div>
   );
 }
