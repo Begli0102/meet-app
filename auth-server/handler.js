@@ -20,7 +20,12 @@ const credentials = {
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
   redirect_uris: ["https://begli0102.github.io/meet-app/"],
-  javascript_origins: ["https://begli0102.github.io", "http://localhost:3000","http://127.0.0.1:8080", "http://192.168.178.37:8080" ],
+  javascript_origins: [
+    "https://begli0102.github.io",
+    "http://localhost:3000",
+    "http://127.0.0.1:8080",
+    "http://192.168.178.37:8080",
+  ],
 };
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
 const oAuth2Client = new google.auth.OAuth2(
@@ -52,104 +57,107 @@ module.exports.getAuthURL = async () => {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
-      authUrl: authUrl}),
+      authUrl: authUrl,
+    }),
   };
 };
 module.exports.getAccessToken = async (event) => {
   // The values used to instantiate the OAuthClient are at the top of the file
-    const oAuth2Client = new google.auth.OAuth2(
-      client_id,
-      client_secret,
-      redirect_uris[0]
-    );
-    // Decode authorization code extracted from the URL query
-    const code = decodeURIComponent(`${event.pathParameters.code}`);
-  
-    return new Promise((resolve, reject) => {
-      /**
-       *  Exchange authorization code for access token with a “callback” after the exchange,
-       *  The callback in this case is an arrow function with the results as parameters: “err” and “token.”
-       */
-  
-      oAuth2Client.getToken(code, (err, token) => {
-        if (err) {
-          return reject(err);
-        }
-        return resolve(token);
-      });
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+  // Decode authorization code extracted from the URL query
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
+
+  return new Promise((resolve, reject) => {
+    /**
+     *  Exchange authorization code for access token with a “callback” after the exchange,
+     *  The callback in this case is an arrow function with the results as parameters: “err” and “token.”
+     */
+
+    oAuth2Client.getToken(code, (err, token) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(token);
+    });
+  })
+    .then((token) => {
+      // Respond with OAuth token
+      return {
+        statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(token),
+      };
     })
-      .then((token) => {
-        // Respond with OAuth token 
-        return {
-          statusCode: 200,
-          headers: {
-            "Access-Control-Allow-Origin": "*"
-          },
-          body: JSON.stringify(token),
-        };
-      })
-      .catch((err) => {
-        // Handle error
-        console.error(err);
-        return {
-          statusCode: 500,
-          headers: {
-            "Access-Control-Allow-Origin": "*"
-          },
-          body: JSON.stringify(err),
-        };
-      });
-  };
+    .catch((err) => {
+      // Handle error
+      console.error(err);
+      return {
+        statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(err),
+      };
+    });
+};
 
-  module.exports.getCalendarEvents = async (event) => {
-    // The values used to instantiate the OAuthClient are at the top of the file
-      const oAuth2Client = new google.auth.OAuth2(
-        client_id,
-        client_secret,
-        redirect_uris[0]
-      );
-      // Decode authorization code extracted from the URL query
-      const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
-      oAuth2Client.setCredentials({ access_token });
+module.exports.getCalendarEvents = async (event) => {
+  // The values used to instantiate the OAuthClient are at the top of the file
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+  // Decode authorization code extracted from the URL query
+  const access_token = decodeURIComponent(
+    `${event.pathParameters.access_token}`
+  );
+  oAuth2Client.setCredentials({ access_token });
 
-      return new Promise((resolve, reject) => {
-        calendar.events.list(
-          {
-              calendarId: calendar_id,
-              auth: oAuth2Client,
-              timeMin: new Date().toISOString(),
-              // maxResult:32, //not sure
-              singleEvents: true,
-              orderBy: "startTime",
-          },
-          (error, response) => {
-              if (error) {
-                  reject(error);
-              } else {
-                  resolve(response);
-              }
-          }
-      ); 
-      })
-        .then((results) => {
-          // Respond with OAuth token 
-          return {
-            statusCode: 200,
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify({ events: results.data.items }),
-          };
-        })
-        .catch((err) => {
-          // Handle error
-          console.error(err);
-          return {
-            statusCode: 500,
-            body: JSON.stringify(err),
-          };
-        });
-    };
+  return new Promise((resolve, reject) => {
+    calendar.events.list(
+      {
+        calendarId: calendar_id,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        // maxResult:32, //not sure
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+      (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
+      }
+    );
+  })
+    .then((results) => {
+      // Respond with OAuth token
+      return {
+        statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({ events: results.data.items }),
+      };
+    })
+    .catch((err) => {
+      // Handle error
+      console.error(err);
+      return {
+        statusCode: 500,
+        body: JSON.stringify(err),
+      };
+    });
+};

@@ -1,4 +1,3 @@
-
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
@@ -11,20 +10,20 @@
   text-align: center;
   margin: 40px;
 }
-.logo{
-  margin-top:50px;
+.logo {
+  margin-top: 50px;
   border-radius: 5%;
   width: 80px;
-  height:80px;
+  height: 80px;
 }
 .App * {
   box-sizing: border-box;
 }
 
- ul {
+ul {
   padding: 0;
   list-style: none;
-} 
+}
 
 /* p {
   margin: 5px 0;
@@ -38,7 +37,8 @@
   display: block;
 } */
 
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
   border-radius: 4px;
   outline: none;
   border: 1px solid #ccc;
@@ -46,14 +46,14 @@ input[type="text"], input[type="number"] {
   line-height: 20px;
   align-self: center;
   height: 50px;
-  width:250px;
+  width: 250px;
   margin-top: 4px;
-  }
+}
 
-.search{
+.search {
   margin-bottom: 12px;
 }
-.EventList{
+.EventList {
   /* margin-bottom: 1rem;
   padding: 15px;
   text-align: left;
@@ -61,43 +61,42 @@ input[type="text"], input[type="number"] {
   width: 100%; */
   width: 250px;
   text-align: center;
-  justify-content: flex-end; 
-  display:inline-flex;
-  flex-direction: column; 
-  margin-top: 70px; 
+  justify-content: flex-end;
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 70px;
   position: relative;
 }
 
 .event-container {
-   display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   flex-basis: 300px;
   max-width: 300px;
-  margin-bottom: 50px; 
+  margin-bottom: 50px;
   /* position: relative; */
   /* justify-content: flex-end;  */
 }
 
-.recharts-tooltip-label{
+.recharts-tooltip-label {
   display: none;
 }
-.text-events{ 
-    /* margin-top: 0px; */
-    margin-bottom: 12px;
-  }
-  
-.CitySearch{
-  display: flex; 
-  flex-direction: column;
-   margin: 50px 15px;  
+.text-events {
+  /* margin-top: 0px; */
+  margin-bottom: 12px;
+}
 
+.CitySearch {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 15px;
 }
 .event-number {
   display: flex;
   flex-direction: column;
 }
-.search-container{
-  display: flex; 
+.search-container {
+  display: flex;
   align-items: center;
   justify-content: center;
   /* padding:0px; */
@@ -105,7 +104,7 @@ input[type="text"], input[type="number"] {
   height: 300px;
 }
 
-.locations{
+.locations {
   font-size: 25px;
   text-transform: uppercase;
   margin-bottom: 0px;
@@ -116,36 +115,34 @@ input[type="text"], input[type="number"] {
   height: 40px;
   z-index: 2;
   align-self: center;
-  margin: 0 200px;   
+  margin: 0 200px;
   font-size: 15px;
   color: rgb(38, 39, 39);
 }
 .Alert {
   font-size: 15px;
   /* margin-top: 0px; */
- 
-  
 }
-.suggestions>li {
+.suggestions > li {
   /* text-align: center; */
   padding: 8px 6px 8px 10px;
   background-color: rgb(96, 96, 107);
   cursor: default;
 }
 
-.suggestions>li:last-child {
+.suggestions > li:last-child {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
-.suggestions>li:hover {
-  background-color: rgb(45, 45, 78); 
-  cursor:pointer;
+.suggestions > li:hover {
+  background-color: rgb(45, 45, 78);
+  cursor: pointer;
   color: #eee;
 }
 
 /* .list { */
-  /* display: grid;
+/* display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 15px;
   grid-column-gap: 50px;
@@ -166,7 +163,7 @@ input[type="text"], input[type="number"] {
 }
 
 /* .li { */
-  /* display: inline-block;
+/* display: inline-block;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -183,22 +180,22 @@ input[type="text"], input[type="number"] {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color:  rgb(45, 45, 78);
+  background-color: rgb(45, 45, 78);
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
-.show-hide-btn:hover{
+.show-hide-btn:hover {
   transition-duration: 10ms;
 }
-.data-vis-wrapper{
+.data-vis-wrapper {
   display: flex;
 }
 .description {
   overflow-x: hidden;
-  width:500px;
- position: relative;
- margin-left: -130px;
+  width: 500px;
+  position: relative;
+  margin-left: -130px;
 }
 
 @media only screen and (min-width: 992px) {

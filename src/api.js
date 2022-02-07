@@ -1,13 +1,12 @@
-import { mockData } from './mock-data';
-import axios from 'axios';
-import NProgress from 'nprogress';
+import { mockData } from "./mock-data";
+import axios from "axios";
+import NProgress from "nprogress";
 
- export const extractLocations = (events) => {
+export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
 };
-
 
 export const checkToken = async (accessToken) => {
   const result = await fetch(
@@ -19,7 +18,6 @@ export const checkToken = async (accessToken) => {
   return result;
 };
 
-
 export const getEvents = async () => {
   NProgress.start();
 
@@ -28,18 +26,17 @@ export const getEvents = async () => {
     return mockData;
   }
   if (!navigator.onLine) {
-    const events = localStorage.getItem('lastEvents');
+    const events = localStorage.getItem("lastEvents");
     NProgress.done();
-  
+
     return events ? JSON.parse(events).events : [];
     // return JSON.parse(events).events
   }
 
-
   const token = await getAccessToken();
   if (token) {
     removeQuery();
-    const url = `https://069f7muo32.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`
+    const url = `https://069f7muo32.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
 
     const result = await axios.get(url);
     if (result.data) {
@@ -52,10 +49,9 @@ export const getEvents = async () => {
   }
 };
 
-
 export const getAccessToken = async () => {
-const accessToken = localStorage.getItem('access_token');
-const tokenCheck = accessToken && (await checkToken(accessToken));
+  const accessToken = localStorage.getItem("access_token");
+  const tokenCheck = accessToken && (await checkToken(accessToken));
 
   if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem("access_token");
@@ -71,12 +67,14 @@ const tokenCheck = accessToken && (await checkToken(accessToken));
     return code && getToken(code);
   }
   return accessToken;
-}
-
+};
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
-    var newurl =window.location.protocol +"//" + window.location.host +
+    var newurl =
+      window.location.protocol +
+      "//" +
+      window.location.host +
       window.location.pathname;
     window.history.pushState("", "", newurl);
   } else {
@@ -85,11 +83,10 @@ const removeQuery = () => {
   }
 };
 
-
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-     `https://069f7muo32.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`   
+    `https://069f7muo32.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
   )
     .then((res) => {
       return res.json();
@@ -100,4 +97,3 @@ const getToken = async (code) => {
 
   return access_token;
 };
-

@@ -1,26 +1,26 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import Event from '../Event';
-import { mockData2 } from '../mock-data';
+import React from "react";
+import { shallow } from "enzyme";
+import Event from "../Event";
+import { mockData2 } from "../mock-data";
 
-describe('<Event />, component', () => {
+describe("<Event />, component", () => {
   let EventWrapper;
 
   beforeAll(() => {
     EventWrapper = shallow(<Event event={mockData2} />);
   });
 
-  test('render correct event details', () => {
-    expect(EventWrapper.find('.event-container')).toHaveLength(1);
+  test("render correct event details", () => {
+    expect(EventWrapper.find(".event-container")).toHaveLength(1);
   });
 
-  test('render show event-details', () => {
+  test("render show event-details", () => {
     EventWrapper.setState({ showhideDetails: true });
-    EventWrapper.find('.show-hide-btn').simulate('click');
+    EventWrapper.find(".show-hide-btn").simulate("click");
   });
 
-  test('render hide event-details', () => {
+  test("render hide event-details", () => {
     EventWrapper.setState({ showhideDetails: false });
-    EventWrapper.find('.show-hide-btn').simulate('click');
+    EventWrapper.find(".show-hide-btn").simulate("click");
   });
 });

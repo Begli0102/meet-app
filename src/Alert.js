@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Alert extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Alert extends Component {
     return {
       color: this.color,
     };
-  }
+  };
 
   render() {
     return (
@@ -24,45 +24,44 @@ class Alert extends Component {
 class InfoAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = 'blue';
+    this.color = "blue";
   }
   getStyle = () => {
     return {
       color: this.color,
-      fontStyle: 'italic',
-      fontSize:'15px'
+      fontStyle: "italic",
+      fontSize: "15px",
     };
-  }
+  };
 }
 
 class ErrorAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = 'red';
-
+    this.color = "red";
   }
   getStyle = () => {
     return {
       color: this.color,
-      fontStyle: 'italic',
-      fontSize:'15px'
+      fontStyle: "italic",
+      fontSize: "15px",
     };
-  }
+  };
 }
 
 class WarningAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = 'orange';
+    this.color = "orange";
   }
 
   getStyle = () => {
     return {
       color: this.color,
-      fontStyle: 'italic',
-      fontSize:'15px'
+      fontStyle: "italic",
+      fontSize: "15px",
     };
   };
 }
 
-export { InfoAlert,ErrorAlert,WarningAlert };
+export { InfoAlert, ErrorAlert, WarningAlert };
